@@ -1,5 +1,9 @@
 @extends('components.layouts.app')
+
+@section('title', 'Home Page')
+
 @section('content')
+
 <!-- Carousel Start -->
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
