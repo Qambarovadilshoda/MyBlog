@@ -21,9 +21,7 @@ class PageController extends Controller
     public function contact(){
         return view('contact');
     }
-    public function blog(){
-        return view('blog');
-    }
+
     public function single(){
         return view('single');
     }
