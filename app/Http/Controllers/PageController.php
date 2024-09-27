@@ -26,3 +26,4 @@ class PageController extends Controller
         return view('single');
     }
 }
+

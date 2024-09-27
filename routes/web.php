@@ -11,5 +11,4 @@ Route::get('/projects', [PageController::class, 'project'])->name('projects');
 Route::get('/contacts', [PageController::class, 'contact'])->name('contacts');
 Route::get('/singles', [PageController::class, 'single'])->name('singles');
 
-
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::resource('posts', PostController::class);

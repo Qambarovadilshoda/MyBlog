@@ -22,108 +22,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-1.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
+        @foreach ($posts as $post)
+            
+        <div class="col-lg-4 col-md-6 mb-5">
+            <div class="position-relative mb-4">
+                <img class="img-fluid rounded w-100" src="img/blog-1.jpg" alt="">
+                <div class="blog-date">
+                    <h4 class="font-weight-bold mb-n1">1</h4>
+                    <small class="text-white text-uppercase">Jan</small>
                 </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
             </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-2.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
-                </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
+            <div class="d-flex mb-2">
+                <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
+                <span class="text-primary px-2">|</span>
+                <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
             </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-3.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
-                </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-2.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
-                </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-3.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
-                </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded w-100" src="img/blog-1.jpg" alt="">
-                    <div class="blog-date">
-                        <h4 class="font-weight-bold mb-n1">01</h4>
-                        <small class="text-white text-uppercase">Jan</small>
-                    </div>
-                </div>
-                <div class="d-flex mb-2">
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                    <span class="text-primary px-2">|</span>
-                    <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                </div>
-                <h5 class="font-weight-medium mb-2">Rebum lorem eos ipsum diam</h5>
-                <p class="mb-4">Dolor justo sea kasd lorem clita justo no diam amet. Kasd magna dolor amet</p>
-                <a class="btn btn-sm btn-primary py-2" href="">Read More</a>
-            </div>
+            <h5 class="font-weight-medium mb-2">{{$post->title}}</h5>
+            <p class="mb-4">{{$post->short_content}}</p>
+            <a class="btn btn-sm btn-primary py-2" href="{{route('posts.show', $post->id)}}">Read More</a>
+        </div>
+        @endforeach
+
             <div class="col-12">
                 <nav aria-label="Page navigation">
                     <ul class="pagination pagination-lg justify-content-center mb-0">
