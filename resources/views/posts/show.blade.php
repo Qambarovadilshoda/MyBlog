@@ -5,7 +5,7 @@
 @section('content')
 
 <x-page-header>
-    {{$post->id}}
+    {{ 'Post - '.  $post->id}}
 </x-page-header>
 
 
@@ -26,10 +26,8 @@
                 </div>
 
                 <div class="mb-5">
-                    <img class="img-fluid rounded w-100 mb-4" src="/img/carousel-1.jpg" alt="Image">
-                    <p>{{$post->content}}</p>
-
-
+                    <img class="img-fluid rounded w-100" src=" {{ asset('storage/' . $post->image) }}" alt="Image">
+                    <p>{{$post->context}}</p>
 
                 </div>
 

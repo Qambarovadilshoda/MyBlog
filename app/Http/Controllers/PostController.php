@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -33,7 +33,14 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $image = $this->uploadImage($request->file('image'));
+        Post::create([
+            'title' => $request->title,
+            'short_content' => $request->short_content,
+            'context' => $request->context,
+            'image' => $image,
+        ]);
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -41,7 +48,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
+        $post = $this->findPost($id);
         $resent_posts = Post::where('id', '!=', $post->id)->limit(5)->get();
         return view('posts.show', compact('post', 'resent_posts'));
     }
@@ -49,10 +56,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function edit(string $id) {}
 
     /**
      * Update the specified resource in storage.
@@ -68,5 +72,16 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function uploadImage($imageName)
+    {
+        
+        $fileName = time() . '.' . $imageName->getClientOriginalExtension();
+        $imagePath = $imageName->storeAs('uploads', $fileName, 'public');
+        return $imagePath;
+    }
+    public function findPost($post_id){
+        $post = Post::findOrFail($post_id);
+        return $post;
     }
 }

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->text('short_content');
-            $table->text('content');
-            $table->string('image');
+            $table->text('context');
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
