@@ -8,7 +8,6 @@
     {{ 'Post - '.  $post->id}}
 </x-page-header>
 
-
 <!-- Detail Start -->
 <div class="container-fluid py-5">
     <div class="container">
@@ -16,6 +15,7 @@
             <div class="col-lg-8">
                 <div class="mb-5">
                     <div class="d-flex mb-2">
+
                         <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
                         <span class="text-primary px-2">|</span>
                         <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
@@ -24,13 +24,22 @@
                     </div>
                     <h1 class="section-title mb-3">{{$post->title}}</h1>
                 </div>
-
                 <div class="mb-5">
+
                     <img class="img-fluid rounded w-100" src=" {{ asset('storage/' . $post->image) }}" alt="Image">
                     <p>{{$post->context}}</p>
+                    <div>
+                        <form action="{{route('posts.destroy', $post->id)}}" method="POST">
+                            <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit', $post->id)}}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+
+
+                    </div>
 
                 </div>
-
                 <div class="mb-5">
                     <h3 class="mb-4 section-title">3 Comments</h3>
                     <div class="media mb-4">

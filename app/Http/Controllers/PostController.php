@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreUpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -56,32 +57,62 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {}
+    public function edit(string $id)
+    {
+        $post = $this->findPost($id);
+        return view('posts.edit', compact('post'));
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdatePostRequest $request, string $id)
     {
-        //
+        $post = $this->findPost($id);
+
+        $post->title = $request->title;
+        $post->short_content = $request->short_content;
+        $post->context = $request->context;
+
+        if ($request->hasFile('image')) {
+            $this->deleteImage($post->image);
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $post->image = $image->storeAs('uploads', $fileName, 'public');
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $post = $this->findPost($id);
+        $this->deleteImage($post->image);
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
     public function uploadImage($imageName)
     {
-        
+
         $fileName = time() . '.' . $imageName->getClientOriginalExtension();
         $imagePath = $imageName->storeAs('uploads', $fileName, 'public');
         return $imagePath;
     }
-    public function findPost($post_id){
+    public function findPost($post_id)
+    {
         $post = Post::findOrFail($post_id);
         return $post;
+    }
+    public function deleteImage($image){
+        if ($image) {
+            @unlink(storage_path('app/public/' . $image));
+        }
     }
 }
