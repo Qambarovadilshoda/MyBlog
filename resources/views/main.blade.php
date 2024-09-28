@@ -19,7 +19,7 @@
                     <div class="p-5" style="width: 100%; max-width: 900px;">
                         <h5 class="text-primary text-uppercase mb-md-3">Cleaning Services</h5>
                         <h1 class="display-3 text-white mb-md-4">Best Quality Solution In Cleaning</h1>
-                        <a href="" class="btn btn-primary">Get A Quote</a>
+                        <a href="{{route('posts.index')}}" class="btn btn-primary">All Posts</a>
                     </div>
                 </div>
             </div>
@@ -101,9 +101,9 @@
                 <h5 class="text-muted font-weight-normal mb-3">Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea lorem justo est dolor eos</h5>
                 <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor</p>
                 <div class="d-flex align-items-center pt-4">
-                    <a href="" class="btn btn-primary mr-5">Learn More</a>
+                    <a href="{{route('services')}}" class="btn btn-primary mr-5">Learn More</a>
                     <button type="button" class="btn-play" data-toggle="modal"
-                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                        data-src="https://www.youtube.com/watch?v=jUJ-VBO46fk&list=PLlvUmyq_t3vxWAppYSeDqsArW5vMIUIb2&index=26" data-target="#videoModal">
                         <span></span>
                     </button>
                     <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5>

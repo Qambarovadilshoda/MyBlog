@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         // Post::withTrashed()->findOrFail(1)->restore();
 
-        $posts = Post::all();
+        $posts = Post::paginate(6);
         return view('posts.index', compact('posts'));
     }
 

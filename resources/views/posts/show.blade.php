@@ -29,10 +29,13 @@
                     <img class="img-fluid rounded w-100" src=" {{ asset('storage/' . $post->image) }}" alt="Image">
                     <p>{{$post->context}}</p>
                     <div>
-                        <form action="{{route('posts.destroy', $post->id)}}" method="POST">
-                            <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit', $post->id)}}">Edit</a>
+                        <form action="{{route('posts.destroy', $post->id)}}" 
+                            method="POST"
+                            onSubmit="return confirm('Are you sure you wish to delete?');"
+                            >
                             @csrf
                             @method('DELETE')
+                            <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit', $post->id)}}">Edit</a>
                             <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                         </form>
 
@@ -150,7 +153,7 @@
                     @foreach ($resent_posts as $resent_post)
 
                     <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                        <img class="img-fluid rounded" src="/img/blog-1.jpg" style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <img class="img-fluid rounded" src="{{ asset('storage/' . $resent_post->image) }}" style="width: 80px; height: 80px; object-fit: cover;" alt="">
                         <div class="d-flex flex-column pl-3">
                             <a class="text-dark mb-2" href="">{{$resent_post->title}}</a>
                             <div class="d-flex">

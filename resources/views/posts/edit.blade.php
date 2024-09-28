@@ -19,19 +19,19 @@
                         @csrf
                         @method('PUT')
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" name="title" value="{{ $post->title}}"/>
+                            <input type="text" class="form-control p-4" name="title" value="{{ $post->title}}" />
                             @error('title')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
                         </div><br>
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="3" name="short_content" >{{ $post->short_content }}</textarea>
+                            <textarea class="form-control p-4" rows="3" name="short_content">{{ $post->short_content }}</textarea>
                             @error('short_content')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
                         </div><br>
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="6" name="context" >{{ $post->context}}</textarea>
+                            <textarea class="form-control p-4" rows="6" name="context">{{ $post->context}}</textarea>
                             @error('context')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
@@ -44,6 +44,7 @@
                         </div><br>
                         <div>
                             <button class="btn btn-primary btn-block py-3 px-5" type="submit"">Update</button>
+                            <a href="{{route('posts.show', $post->id)}}" class=" btn btn-dark btn-block py-3 px-5" >Cansel</a>
                         </div>
                     </form>
                 </div>
