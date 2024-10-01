@@ -24,6 +24,13 @@
                             @enderror
                         </div><br>
                         <div class="control-group">
+                            <select class="form-control" name="category_id">
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div><br>
+                        <div class="control-group">
                             <textarea class="form-control p-4" rows="3" name="short_content" placeholder="Short content">{{ old('short_content') }}</textarea>
                             @error('short_content')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>

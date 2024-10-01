@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\StoreUpdatePostRequest;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     {
         // Post::withTrashed()->findOrFail(1)->restore();
 
-        $posts = Post::paginate(6);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
         return view('posts.index', compact('posts'));
     }
 
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create')
+            ->with(['categories' => Category::all()]);
     }
 
     /**
@@ -36,6 +38,8 @@ class PostController extends Controller
     {
         $image = $this->uploadImage($request->file('image'));
         Post::create([
+            'user_id' => 1,
+            'category_id' => $request->category_id,
             'title' => $request->title,
             'short_content' => $request->short_content,
             'context' => $request->context,
@@ -107,10 +111,12 @@ class PostController extends Controller
     }
     public function findPost($post_id)
     {
+
         $post = Post::findOrFail($post_id);
         return $post;
     }
-    public function deleteImage($image){
+    public function deleteImage($image)
+    {
         if ($image) {
             @unlink(storage_path('app/public/' . $image));
         }
