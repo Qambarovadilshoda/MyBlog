@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\StoreUpdatePostRequest;
-use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -28,7 +30,10 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create')
-            ->with(['categories' => Category::all()]);
+            ->with([
+                'categories' => Category::all(),
+                'tags' => Tag::all()
+            ]);
     }
 
     /**
@@ -37,7 +42,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $image = $this->uploadImage($request->file('image'));
-        Post::create([
+        $post = Post::create([
             'user_id' => 1,
             'category_id' => $request->category_id,
             'title' => $request->title,
@@ -45,6 +50,12 @@ class PostController extends Controller
             'context' => $request->context,
             'image' => $image,
         ]);
+
+        if (isset($request->tags)) {
+            foreach ($request->tags as $tag) {
+                $post->tags()->attach($tag);
+            }
+        }
         return redirect()->route('posts.index');
     }
 
@@ -55,7 +66,9 @@ class PostController extends Controller
     {
         $post = $this->findPost($id);
         $resent_posts = Post::where('id', '!=', $post->id)->limit(5)->get();
-        return view('posts.show', compact('post', 'resent_posts'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.show', compact('post', 'resent_posts', 'categories', 'tags'));
     }
 
     /**
@@ -64,6 +77,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = $this->findPost($id);
+        if ($post->user_id != $post->user->id) {
+            return redirect()->route('posts.show');
+        }
         return view('posts.edit', compact('post'));
     }
 
@@ -94,14 +110,20 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $post = $this->findPost($id);
-        $this->deleteImage($post->image);
-        $post->delete();
+        Comment::where('post_id', $id)->delete();
 
-        return redirect()->route('posts.index');
+        $post = Post::findOrFail($id);
+        if ($post->user_id == $post->user->id) {
+
+            $this->deleteImage($post->image);
+            $post->delete();
+            return redirect()->route('posts.index');
+        }
+        return redirect()->route('posts.show');
     }
+
     public function uploadImage($imageName)
     {
 
