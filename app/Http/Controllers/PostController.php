@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\StoreUpdatePostRequest;
 
@@ -43,7 +44,7 @@ class PostController extends Controller
     {
         $image = $this->uploadImage($request->file('image'));
         $post = Post::create([
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'category_id' => $request->category_id,
             'title' => $request->title,
             'short_content' => $request->short_content,

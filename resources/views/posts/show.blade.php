@@ -56,25 +56,9 @@
 
                 <div class="bg-light rounded p-5">
                     <h3 class="mb-4 section-title">Leave a comment</h3>
+                    @auth
                     <form action="{{route('comments.store')}}" method="POST">
                         @csrf
-                        <!-- @if (!auth()->check()) -->
-                        <!-- <div class="form-row">
-                        <div class="form-group col-sm-6">
-                            <label for="name">Name *</label>
-                            <input type="text" class="form-control" name="name">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label for="email">Email *</label>
-                            <input type="email" class="form-control" name="email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="website">Website</label>
-                        <input type="url" class="form-control" name="website">
-                    </div> -->
-                        <!-- @else -->
-                        <!-- @endif -->
                         <div class="form-group">
                             <label for="comment">Message *</label>
                             <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -84,6 +68,11 @@
                             <input type="submit" value="Leave Comment" class="btn btn-primary">
                         </div>
                     </form>
+                    @else
+                    <div>
+                        <a href="{{route('login')}}" class="btn btn-primary">Login For Leave Comment</a>
+                    </div>
+                    @endauth
                 </div>
             </div>
 

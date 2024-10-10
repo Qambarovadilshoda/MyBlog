@@ -33,7 +33,7 @@
                         <div class="control-group">
                             <select class="form-control" name="tags[]" multiple>
                                 @foreach ($tags as $tag)
-                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div><br>

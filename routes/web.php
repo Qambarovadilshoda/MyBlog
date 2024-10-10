@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
@@ -16,3 +17,9 @@ Route::resources([
     'posts' => PostController::class,
     'comments' => CommentController::class,
 ]);
+
+Route::get('/register',[ AuthController::class, 'registerForm'])->name('register');
+Route::post('/handleRegister', [AuthController::class, 'handleRegister'])->name('handleRegister');
+Route::get('/login',[ AuthController::class, 'loginForm'])->name('login');
+Route::post('/handleLogin',[ AuthController::class, 'handleLogin'])->name('handleLogin');
+Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
