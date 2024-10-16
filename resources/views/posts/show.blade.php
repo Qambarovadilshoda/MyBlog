@@ -29,16 +29,20 @@
 
                     <img class="img-fluid rounded w-100" src=" {{ asset('storage/' . $post->image) }}" alt="Image">
                     <p>{{$post->context}}</p>
+                    @auth
+                    @canany(['update', 'delete'], $post)
                     <div>
-                        <form action="{{route('posts.destroy', $post->id)}}"
+                        <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit', $post->id)}}">Edit</a>
+                        <form style="display: inline;" action="{{route('posts.destroy', $post->id)}}"
                             method="POST"
                             onSubmit="return confirm('Are you sure you wish to delete?');">
                             @csrf
                             @method('DELETE')
-                            <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit', $post->id)}}">Edit</a>
                             <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                         </form>
                     </div>
+                    @endcanany
+                    @endauth
                 </div>
                 <div class="mb-5">
                     <h3 class="mb-4 section-title">{{$post->comments()->count()}} Comments</h3>

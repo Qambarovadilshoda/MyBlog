@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\StoreUpdatePostRequest;
 
@@ -78,9 +79,7 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = $this->findPost($id);
-        if ($post->user_id != $post->user->id) {
-            return redirect()->route('posts.show');
-        }
+        Gate::authorize('update', $post);
         return view('posts.edit', compact('post'));
     }
 
@@ -116,12 +115,11 @@ class PostController extends Controller
         Comment::where('post_id', $id)->delete();
 
         $post = Post::findOrFail($id);
-        if ($post->user_id == $post->user->id) {
+        Gate::authorize('delete', $post);
 
-            $this->deleteImage($post->image);
-            $post->delete();
-            return redirect()->route('posts.index');
-        }
+
+        $this->deleteImage($post->image);
+        $post->delete();
         return redirect()->route('posts.show');
     }
 

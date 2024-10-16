@@ -13,10 +13,8 @@ Route::get('/projects', [PageController::class, 'project'])->name('projects');
 Route::get('/contacts', [PageController::class, 'contact'])->name('contacts');
 Route::get('/singles', [PageController::class, 'single'])->name('singles');
 
-Route::resources([
-    'posts' => PostController::class,
-    'comments' => CommentController::class,
-]);
+Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('comments' , CommentController::class);
 
 Route::get('/register',[ AuthController::class, 'registerForm'])->name('register');
 Route::post('/handleRegister', [AuthController::class, 'handleRegister'])->name('handleRegister');
