@@ -20,6 +20,6 @@ class CheckAuthMiddleware
 
             return $next($request);
         }
-        return redirect()->back();
+        abort(403);
     }
 }
