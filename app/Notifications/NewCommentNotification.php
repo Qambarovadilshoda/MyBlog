@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -15,7 +16,7 @@ class NewCommentNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(protected Comment $comment)
+    public function __construct(protected Post $post)
     {
         //
     }
@@ -49,8 +50,8 @@ class NewCommentNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'post_id' => $this->comment->post_id,
-            'notify' => 'New comment in your post ' . $this->comment->post->title,
+            'post_id' => $this->post->id,
+            'notify' => 'New comment in your post ' . $this->post->title,
         ];
     }
 }
