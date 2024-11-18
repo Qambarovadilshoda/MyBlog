@@ -14,8 +14,8 @@
     <div class="container">
         <div class="row align-items-end mb-4">
             <div class="col-lg-6">
-                <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">Latest Blog</h6>
-                <h1 class="section-title mb-3">Latest Articles From Our Blog Post</h1>
+                <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">{{__('Latest Blog')}}</h6>
+                <h1 class="section-title mb-3">{{__('Latest Articles From Our Blog Post')}}</h1>
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
 
             <div class="col-lg-4 col-md-6 mb-5">
                 <div class="position-relative mb-4">
-                    <img width="350" height="300" src="{{ asset('storage/' . $post->image) }}" alt="">
+                    <img width="350" height="300" src="{{ asset('/storage' . '/' . $post->image) }}" alt="">
                     <div class="blog-date ">
                         <h4 class="font-weight-bold mb-n1">1</h4>
                         <small class="text-white text-uppercase">Jan</small>
@@ -40,7 +40,7 @@
                 </div>
                 <h5 class="font-weight-medium mb-2">{{$post->title}}</h5>
                 <p class="mb-4">{{$post->short_content}}</p>
-                <a class="btn btn-sm btn-primary py-2" href="{{route('posts.show', $post->id)}}">Read More</a>
+                <a class="btn btn-sm btn-primary py-2" href="{{route('posts.show', $post->id)}}">{{__('Read More')}}</a>
             </div>
             @endforeach
 

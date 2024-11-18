@@ -5,7 +5,7 @@
 @section('content')
 
 <x-page-header>
-    Contact
+    {{__('Contact')}}
 </x-page-header>
 
 
@@ -14,11 +14,11 @@
         <div class="container">
             <div class="row align-items-end mb-4">
                 <div class="col-lg-6">
-                    <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">Contact Us</h6>
-                    <h1 class="section-title mb-3">Contact Us For Cleaning Services</h1>
+                    <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">{{__('Contact Us')}}</h6>
+                    <h1 class="section-title mb-3">{{__('Contact Us For Cleaning Services')}}</h1>
                 </div>
                 <div class="col-lg-6">
-                    <h4 class="font-weight-normal text-muted mb-3">Eirmod kasd duo eos et magna, diam dolore stet sea clita sit ea erat lorem. Ipsum eos ipsum magna lorem stet</h4>
+                    <h4 class="font-weight-normal text-muted mb-3">{{__('Send a message to contact us. Of course, we will justify your trust.')}}</h4>
                 </div>
             </div>
             <div class="row">
@@ -28,24 +28,24 @@
                         <form name="sentMessage" id="contactForm" novalidate="novalidate">
                             <div class="form-row">
                                 <div class="col-sm-6 control-group">
-                                    <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                    <input type="text" class="form-control p-4" id="name" placeholder="{{__('Your Name')}}" required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="col-sm-6 control-group">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <input type="email" class="form-control p-4" id="email" placeholder="{{__('Your Email')}}" required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                <input type="text" class="form-control p-4" id="subject" placeholder="{{__('Subject')}}" required="required" data-validation-required-message="Please enter a subject" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                <textarea class="form-control p-4" rows="6" id="message" placeholder="{{__('Message *')}}" required="required" data-validation-required-message="Please enter your message"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
-                                <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                                <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">{{__('Send Message')}}</button>
                             </div>
                         </form>
                     </div>

@@ -6,9 +6,9 @@
             </div>
             <div class="col-md-6 text-center text-md-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="btn btn-sm btn-outline-light" href="{{route('home')}}">Home</a>
+                    <a class="btn btn-sm btn-outline-light" href="{{route('home')}}">{{__('Home')}}</a>
                     <i class="fas fa-angle-double-right text-light mx-2"></i>
-                    <a class="btn btn-sm btn-outline-light disabled" href="{{route('about')}}">About</a>
+                    <a class="btn btn-sm btn-outline-light disabled" href="{{route('about')}}">{{__('About')}}</a>
                 </div>
             </div>
         </div>

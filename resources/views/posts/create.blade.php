@@ -5,7 +5,7 @@
 @section('content')
 
 <x-page-header>
-    Create New Post
+    {{__('Create New Post')}}
 </x-page-header>
 
 
@@ -18,7 +18,7 @@
                     <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" name="title" value="{{ old('title') }}" placeholder="Title" />
+                            <input type="text" class="form-control p-4" name="title" value="{{ old('title') }}" placeholder="{{__('Title')}}" />
                             @error('title')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
@@ -38,13 +38,13 @@
                             </select>
                         </div><br>
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="3" name="short_content" placeholder="Short content">{{ old('short_content') }}</textarea>
+                            <textarea class="form-control p-4" rows="3" name="short_content" placeholder="{{__('Short content')}}">{{ old('short_content') }}</textarea>
                             @error('short_content')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
                         </div><br>
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="6" name="context" placeholder="Your content">{{ old(  'context') }}</textarea>
+                            <textarea class="form-control p-4" rows="6" name="context" placeholder="{{__('Your content')}}">{{ old(  'context') }}</textarea>
                             @error('context')
                             <p class="help-block text-danger">{{ ' * ' . $message }}</p>
                             @enderror
@@ -56,7 +56,7 @@
                             @enderror
                         </div><br>
                         <div>
-                            <button class="btn btn-primary btn-block py-3 px-5" type="submit"">Create Post</button>
+                            <button class="btn btn-primary btn-block py-3 px-5" type="submit"">{{__('Create Post')}}</button>
                         </div>
                     </form>
                 </div>

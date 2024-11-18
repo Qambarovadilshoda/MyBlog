@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="container mx-auto px-4 py-8">
-        <h3 style="margin-top:45px" class="text-2xl font-semibold mb-4">Your Notifications</h3>
+        <h3 style="margin-top:45px" class="text-2xl font-semibold mb-4">{{__('Your Notifications')}}</h3>
 
         <div class="bg-white shadow rounded-lg">
             <div class="p-4 border-b">
-                <h3 class="text-lg font-semibold text-gray-700">Recent Notifications</h3>
+                <h3 class="text-lg font-semibold text-gray-700">{{__('Recent Notifications')}}</h3>
             </div>
 
             <div class="max-h-80 overflow-y-auto">
                 @if(auth()->check() && auth()->user()->unreadNotifications->count() > 0)
                 <form style="margin-right:899px" action="{{route('read.all.notify')}}" method="GET">
                     <div class="p-4 text-center border-t">
-                        <button  class="btn btn-primary">Read All</button>
+                        <button  class="btn btn-primary">{{__('Read All')}}</button>
                     </div>
                 </form>
                 @endif
@@ -27,13 +27,13 @@
                         </span>
                         <form style="margin-right: 990px" action="{{route('read.notify', $notify->id)}}" method="GET">
                             <div class="p-4 text-center border-t">
-                                <button  class="btn btn-primary">Read</button>
+                                <button  class="btn btn-primary">{{__('Read')}}</button>
                             </div>
                         </form>
                     </div>
                 @empty
                     <div class="px-4 py-4 text-gray-500">
-                        No notifications available.
+                        {{__('No notifications available.')}}
                     </div>
                 @endforelse
 

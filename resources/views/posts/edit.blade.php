@@ -5,7 +5,7 @@
 @section('content')
 
 <x-page-header>
-    Edit Post - {{$post->id}}
+    {{__('Edit Post')}}
 </x-page-header>
 
 
@@ -43,8 +43,8 @@
                             @enderror
                         </div><br>
                         <div>
-                            <button class="btn btn-primary btn-block py-3 px-5" type="submit"">Update</button>
-                            <a href="{{route('posts.show', $post->id)}}" class=" btn btn-dark btn-block py-3 px-5" >Cansel</a>
+                            <button class="btn btn-primary btn-block py-3 px-5" type="submit">{{__('Update')}}</button>
+                            <a href="{{route('posts.show', $post->id)}}" class=" btn btn-dark btn-block py-3 px-5" >{{__('Cansel')}}</a>
                         </div>
                     </form>
                 </div>
